@@ -4,13 +4,17 @@ var main = {
         $('#btn-save').on('click', function () {
             _this.save();
         });
+
+        $('#btn-update').on('click', function(){
+            _this.update();
+        });
     },
     save : function () {
         var data = {
                 title: $('#title').val(),
                 author : $('#author').val(),
                 content : $('#content').val()
-    };
+        };
     $.ajax({
             type:'POST',
             url: '/api/v1/posts',
@@ -27,8 +31,8 @@ var main = {
     },
     update : function(){
         var data = {
-            title: $('#title').val();
-            content: $('#content').val();
+            title: $('#title').val(),
+            content: $('#content').val()
         };
 
         var id = $('#id').val();
