@@ -8,6 +8,9 @@ var main = {
         $('#btn-update').on('click', function(){
             _this.update();
         });
+        $('#btn-delete').on('click', function(){
+                    _this.delete();
+        });
     },
     save : function () {
         var data = {
@@ -49,6 +52,21 @@ var main = {
         }).fail(function(error) {
             alert(JSON.stringify(error));
             });
+    },
+    delete : function(){
+        var id = $('#id').val();
+
+       $.ajax({
+            type : 'DELETE',
+            url : '/api/v1/posts/'+id,
+            dataType : 'json',
+            contentType:'application/json; charset=utf-8',
+       }).done(function(){
+            alert('글이 삭제되었습니다.');
+            window.location.href='/';
+       }).fail(function(error){
+            alert(JSON.stringify(error));
+       });
     }
 };
 main.init();    //이게 실행이 됐기때문에 위쪽 function이 동작하는 것이다.
